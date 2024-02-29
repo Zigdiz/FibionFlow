@@ -38,7 +38,7 @@ Fibion Flow is an R markdown code to process data collected from the Fibion Rese
  - Bout duration
  - Bout MET-minutes
  - Bout mean METs
- - Bout activity duration (at >1.5 METs)
+ - Bout activity duration (at >1.5 METs, e.g. to calculate duration of active sitting)
 
 ### Sitting and activity accumulation patterns:
  - Number of sitting bouts
