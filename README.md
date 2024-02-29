@@ -1,4 +1,4 @@
-# FibionFlow
+w# FibionFlow
 Fibion Flow is an R markdown code to process data collected from the Fibion Research device. It includes a validated algorithm to detect sleep and non-wear periods and to analyse sitting and physical activity durations and energy expenditures from the valid waking hours. Additional properties include visual representation of the algorithm performance, and data segmentation based on custom timestamps, e.g. for analysing sitting and physical activity metrics for working and non-working hours. 
 
 ## Features of FibionFlow
@@ -31,7 +31,7 @@ Fibion Flow is an R markdown code to process data collected from the Fibion Rese
  - Moderate-intensity activity duration
  - Vigorous-intensity activity duration
  - Moderate-to-vigorous-intensity activity duration
- - Sub-walking-intensity activity duration (relative-to-walking METs intensity)
+ - Below-walking-intensity activity duration (relative-to-walking METs intensity)
  - Above-walking-intensity activity duration (relative-to-walking METs intensity)
 
 ### Sitting and activity-bout summaries of:
