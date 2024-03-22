@@ -51,10 +51,7 @@ Fibion Flow is an R markdown code to process data collected from the Fibion Rese
 
 The variables are calculated as daily means, as well as non-weighted and weighted (weekdays 5/7, weekend days 2/7) overall means. 
 
-### Example visualisation of automated waking wear detection
-![FibionFlow algorithm output figure](https://github.com/ArtoPesola/FibionFlow/assets/51989005/abff31da-7b64-4898-b8df-99a791406c1d)
-
-
-
+### Example of automated waking wear detection visualisation
+![FibionFlow algorithm output figure](https://github.com/ArtoPesola/FibionFlow/assets/51989005/b624839e-5b2b-4596-a51a-c59974b70b90)
 
 FibionFlow has been developed by Arto Pesola (director of Active Life Lab, South-Eastern Finland University of Applied Sciences and co-founder of Fibion Inc).
