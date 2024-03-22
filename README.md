@@ -54,4 +54,7 @@ The variables are calculated as daily means, as well as non-weighted and weighte
 ### Example of automated waking wear detection visualisation
 ![FibionFlow algorithm output figure](https://github.com/ArtoPesola/FibionFlow/assets/51989005/b624839e-5b2b-4596-a51a-c59974b70b90)
 
+### Example of custom events visualisation
+![FibionFlow custom events output figure](https://github.com/ArtoPesola/FibionFlow/assets/51989005/df851d9f-4f85-49f9-af0f-1ed34a081720)
+
 FibionFlow has been developed by Arto Pesola (director of Active Life Lab, South-Eastern Finland University of Applied Sciences and co-founder of Fibion Inc).
