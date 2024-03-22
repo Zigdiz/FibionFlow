@@ -63,7 +63,7 @@ library(here)
 
 ```{r}
 
-# Specify the relative path to the FibionFlow_v1.Rmd file
+# Specify the relative path to the FibionFlow.Rmd file
 here::set_here()
 
 ```
@@ -76,7 +76,7 @@ here::set_here()
 activityresults_list = list()
 
 #Get the list of files to be analysed. Allow .csv files with alternative writing format
-fibionfiles <- list.files(path = file.path(here::here(), "Fibion data"), pattern="\\.(CSV|csv)$", recursive=TRUE, full.names=TRUE)
+fibionfiles <- list.files(path = file.path(here::here(), "Example data"), pattern="\\.(CSV|csv)$", recursive=TRUE, full.names=TRUE)
 
 ########## Set parameters for sleep-nonwear algorithm ##########
 
@@ -698,7 +698,7 @@ plot_activity_stacked
 
 # Name the plot
 wd <- getwd()
-file_name <- paste0(wd, "/Figures/Summaryplot_algorithm_", filename, ".pdf")
+file_name <- paste0(wd, "/Summaryplot_algorithm_", filename, ".pdf")
 
   # Save the plot
   ggsave(filename = file_name, plot = plot_activity_stacked, width = 10, height = 30, units = "in", dpi = 300)
@@ -730,7 +730,7 @@ write_xlsx(activityresults_all, "fibion_daily_summaries.xlsx")
 activityeventresults_list = list()
 
 #Get the list of files to be analysed. Allow .csv files with alternative writing format
-fibionfiles <- list.files(path = file.path(here::here(), "Fibion data"), pattern="\\.(CSV|csv)$", recursive=TRUE, full.names=TRUE)
+fibionfiles <- list.files(path = file.path(here::here(), "Example data"), pattern="\\.(CSV|csv)$", recursive=TRUE, full.names=TRUE)
 
 ########## Set parameters for activity intensity classes ##########
 
@@ -798,7 +798,7 @@ data_acc[, rowsum_s := rowSums(.SD, na.rm = TRUE), .SDcols = patterns("_s$")]
 ############# Get the events file #############
 
 # Load the Excel file and match the sheet current file
-events <- read_excel(path = file.path(here::here(), "events.xlsx"), sheet=file)
+events <- read_excel(path = file.path(here::here(), "Example data/events.xlsx"), sheet=file)
 
 setDT(events)
 
@@ -808,7 +808,6 @@ mutate(from = as.POSIXct(from, format = "%d.%m.%Y %H:%M"),
 to = as.POSIXct(to, format = "%d.%m.%Y %H:%M"))
 
 eventstimezone <- attr(events$from, "tzone")
-print(timezone_from)
 
 ############# Calculate METs #############
 
@@ -1106,7 +1105,7 @@ plot_activity_stacked_events
 
 # Name the plot
 wd <- getwd()
-file_name <- paste0(wd, "/Figures/Summaryplot_events_", filename, ".pdf")
+file_name <- paste0(wd, "/Summaryplot_events_", filename, ".pdf")
 
   # Save the plot
   ggsave(filename = file_name, plot = plot_activity_stacked_events, width = 10, height = 30, units = "in", dpi = 300)
