@@ -719,7 +719,6 @@ write.table(activityresults_all, "fibion_daily_summaries.txt")
 write_xlsx(activityresults_all, "fibion_daily_summaries.xlsx")
 
 
-
 ```
 
 ## Custom events-based analysis
@@ -868,7 +867,7 @@ walking_METthreshold <- sum(data_acc$walking_METmin, na.rm = TRUE) / sum(data_ac
 
 # Iterate over each activity type for row-wise calculation
 for (activity in activity_types) {
-  metmin_col <- paste0(activity, "_METmin")
+  met_col <- paste0(activity, "_met100")
   time_col <- paste0(activity, "_s")
   
   # Calculate durations row-wise. We need to first summarize METmin and then divide by time to account for different activity durations at different MET-levels
@@ -1123,7 +1122,6 @@ write.table(activityeventresults_all, "fibion_event_summaries.txt")
 
 #Write results as an excel file
 write_xlsx(activityeventresults_all, "fibion_event_summaries.xlsx")
-
 
 
 ```
