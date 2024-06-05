@@ -1,3 +1,8 @@
 *.pdf
 *.txt
 *.here
+.vs/FibionFlow/FileContentIndex/
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
+.vs/FibionFlow/v17/.wsuo
+

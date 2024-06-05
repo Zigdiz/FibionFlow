@@ -1,0 +1,15 @@
+{
+    "r.rterm.windows": "C:\\Program Files\\R\\R-4.4.0\\bin\\R.exe",  // Update this path to your R installation path
+    "r.rterm.mac": "/usr/local/bin/R",
+    "r.rterm.linux": "/usr/bin/R",
+    "r.lsp.path": "C:\\Program Files\\R\\R-4.4.0\\bin\\R.exe",  // Update this path to your R installation path
+    "r.lsp.args": ["--slave", "-e", "languageserver::run()"],
+    "r.rpath.windows": "C:\\Program Files\\R\\R-4.4.0\\bin",  // Update this path to your R installation path
+    "r.rpath.mac": "/usr/local/bin",
+    "r.rpath.linux": "/usr/bin",
+    "r.sessionWatcher": true,
+    "r.bracketedPaste": true,
+    "r.plot.useHttpgd": true,
+    "r.plot.usePlotViewer": true,
+    "r.alwaysUseActiveTerminal": false
+  }
