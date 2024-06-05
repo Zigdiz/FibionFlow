@@ -1,5 +1,5 @@
 # R/visualizations/plots.R
-create_activity_plot <- function(data, output_filename) {
+create_activity_plot <- function(data, data_acc_slnw, output_filename) {
   activity_data <- melt(data, id.vars = c("date", "time", "timestamp"), measure.vars = c("off_s", "sitting_s", "standing_s", "walking_s", "cycling_s", "high_intensity_s"))
   activity_data$variable <- as.character(activity_data$variable)
   

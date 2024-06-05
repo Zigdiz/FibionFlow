@@ -6,6 +6,7 @@ source("R/utils.R")
 
 # Load algorithm scripts
 source("R/algorithms/sleep_nonwear_detection.R")
+source("R/algorithms/event_analysis.R")
 
 # Load visualization scripts
 source("R/visualizations/plots.R")
@@ -20,14 +21,16 @@ run_all_analyses <- function() {
   
   # Run sleep/nonwear detection analysis
   for (file in fibionfiles) {
-    data <- run_sleep_nonwear_detection(file)
+    result <- run_sleep_nonwear_detection(file)
+    data <- result$data
+    data_acc_slnw <- result$data_acc_slnw
     
     # Extract filename without extension
     filename <- sub("\\.CSV$", "", basename(file), ignore.case = TRUE)
     
     # Generate plot and save
     plot_filename <- file.path(here::here(), "data/output", paste0("Summaryplot_algorithm_", filename, ".pdf"))
-    create_activity_plot(data, plot_filename)
+    create_activity_plot(data, data_acc_slnw, plot_filename)
     
     # Save results
     save_results(data, filename)
@@ -37,6 +40,11 @@ run_all_analyses <- function() {
   event_file <- file.path(here::here(), "data/Example data/events.xlsx")
   
   for (file in fibionfiles) {
+    if (!(sub("\\.CSV$", "", basename(file), ignore.case = TRUE) %in% excel_sheets(event_file))) {
+      message(paste("Sheet not found for file:", file))
+      next
+    }
+    
     data <- run_event_analysis(file, event_file)
     
     # Extract filename without extension

@@ -2,8 +2,10 @@
 source("R/utils.R")
 
 preprocess_data <- function(data) {
+  setDT(data)  # Ensure the data is a data.table
+  
   setnames(data, old = c("V1", "V2", "V3", "V4", "V5", "V6", "V7", "V8", "V9", "V10", "V11", "V12", "V13"), 
-                 new = c("timestamp", "off_s", "sitting_s", "standing_s", "walking_s", "cycling_s", "high_intensity_s", "off_met100", "sitting_met100", "standing_met100", "walking_met100", "cycling_met100", "high_intensity_met100"))
+           new = c("timestamp", "off_s", "sitting_s", "standing_s", "walking_s", "cycling_s", "high_intensity_s", "off_met100", "sitting_met100", "standing_met100", "walking_met100", "cycling_met100", "high_intensity_met100"))
   
   metadata_row <- which(data$timestamp == "[METADATA]")
   if (length(metadata_row) > 0) {
@@ -18,6 +20,12 @@ preprocess_data <- function(data) {
   cols_to_convert <- names(data)[grepl("_s$", names(data))]
   data[, (cols_to_convert) := lapply(.SD, as.numeric), .SDcols = cols_to_convert]
   data[, rowsum_s := rowSums(.SD, na.rm = TRUE), .SDcols = patterns("_s$")]
+  
+  # Ensure 'Off' column is properly created
+  data[, Off := off_s]
+  data[, Stationary := sitting_s + standing_s]
+  data[, Activity := walking_s + cycling_s + high_intensity_s]
+
   return(data)
 }
 
@@ -85,5 +93,16 @@ run_sleep_nonwear_detection <- function(filepath) {
   data <- preprocess_data(data)
   data <- calculate_mets(data)
   data <- identify_segments(data, 2, 1, 0.10, 0.8) # Example params
-  return(data)
+
+  # Create data_acc_slnw
+  data[, SLNW_change := ifelse(SLNW == "Wake", rleid(SLNW), NA)]
+  data_acc_slnw <- data %>%
+    dplyr::filter(SLNW %in% c("Wake")) %>%
+    group_by(SLNW_change, date) %>%
+    dplyr::summarize(date = first(date),
+      from = first(timestamp),
+      to = last(timestamp)) %>%
+    dplyr::filter(!is.na(SLNW_change))
+
+  return(list(data = data, data_acc_slnw = data_acc_slnw))
 }
